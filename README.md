@@ -1,70 +1,148 @@
-# Getting Started with Create React App
+# Chatgram 💬
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Real-time chatting web application built with the MERN stack and Socket.IO.  
+Chatgram lets users exchange messages instantly through a modern, responsive web UI backed by a Node.js/Express server and MongoDB.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+- **Real-time messaging**
+  - Bidirectional communication using WebSockets (Socket.IO).
+  - Messages appear instantly without page refresh.
+- **Persistent storage**
+  - Messages and user data are stored in MongoDB so chats don’t disappear when the server restarts.
+- **Separate frontend & backend**
+  - React-based UI in `/src`
+  - Node.js/Express API + Socket.IO server in `/backend`
+- **Developer-friendly setup**
+  - Single command to run both frontend and backend using `concurrently`.
+  - Hot reload powered by `nodemon` for the backend and CRA dev server for the frontend.
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🧱 Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Frontend**
+- React (Create React App)
+- HTML / CSS / JavaScript
 
-### `npm test`
+**Backend**
+- Node.js
+- Express.js
+- Socket.IO
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Database**
+- MongoDB (local or cloud, e.g. MongoDB Atlas)
 
-### `npm run build`
+**Tooling**
+- nodemon (backend auto-reload)
+- concurrently (run frontend + backend together)
+- npm / Node.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📸 Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### SignUp Page
+<img width="1902" height="911" alt="Screenshot 2025-11-29 101555" src="https://github.com/user-attachments/assets/effb3848-9138-4dc6-a67a-89afaf29c55d" />
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Chat Room
+<img width="1916" height="846" alt="Screenshot 2025-11-29 101605" src="https://github.com/user-attachments/assets/f8075744-7316-4358-a671-6d7ae39f651a" />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Add friends 
+<img width="1919" height="849" alt="Screenshot 2025-11-29 101620" src="https://github.com/user-attachments/assets/08c50c4c-d931-4f1f-a69d-f897db7a91ab" />
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Friend Request Management
+<img width="1919" height="852" alt="Screenshot 2025-11-29 101644" src="https://github.com/user-attachments/assets/af7783bf-03cb-4040-b9fc-27d0187ce88d" />
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📁 Project Structure
 
-### Code Splitting
+```bash
+Chatgram/
+├── backend/
+│   ├── index.js              # Entry point for server + socket.io
+│   ├── database.js           # MongoDB connection config
+│   ├── models/               # Mongoose schemas (User, Message, etc.)
+│   ├── routes/               # API routes (auth, chat endpoints, etc.)
+│   ├── middleware/           # Helper functions
+│   ├── package.json
+│   └── ...other server files
+│
+├── src/
+│   ├── components/           # UI components (ChatBox, MessageList, InputBar...)
+│   ├── context/              # Global contexts (Chat, Socket)
+│   ├── App.js
+│   ├── index.js
+│   └── styles/               # CSS / styling files
+│   └── assets/               # static files
+│
+├── public/                   # Static assets (logo, favicon, icons)
+├── .env                      # Environment variables (not committed)
+├── .gitignore
+├── package.json              # Root scripts & dependencies
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🚀 Getting Started
 
-### Analyzing the Bundle Size
+### 1. Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Ensure you have the following installed:
 
-### Making a Progressive Web App
+- **Node.js** *(LTS recommended)*
+- **npm** *(comes with Node)*
+- **MongoDB** – Local instance or MongoDB Atlas connection URL
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2. Clone the Repository
 
-### Advanced Configuration
+```bash
+git clone https://github.com/raj-mistry-01/Chatgram.git
+cd Chatgram
+```
+### 3. Install Dependencies
+From the root folder:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm install
+```
+If you have a separate backend package.json, also run:
+```bash
+cd backend
+npm install
+cd ..
+```
+### 4. Configure Environment Variables
+Create a .env file (in root or /backend based on your project setup):
 
-### Deployment
+```bash
+env
+# MongoDB connection string
+MONGO_URI=mongodb://localhost:27017/chatgram
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Server port
+PORT=5000
 
-### `npm run build` fails to minify
+# (Optional) CORS and other client config
+CLIENT_URL=http://localhost:3000
+Ensure this matches how you access environment variables inside backend/index.js.
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 5. Run the Project
+Sample script setup:
+```bash
+"scripts": {
+  "start": "react-scripts start",
+  "server": "nodemon backend/index.js",
+  "both": "concurrently \"nodemon backend/index.js\" \"npm start\""
+}
+```
+
+Start both frontend + backend together:
+
+```bash
+npm run both
+```
