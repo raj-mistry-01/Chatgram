@@ -215,12 +215,12 @@ function ChatWith() {
         //     console.log(ids);
         //     socket.off("OnlineIds")
         // })
-        socket.on("OnlineIds",ids=>{
-            console.log(ids);
-            return () => {
-                socket.off("OnlineIds")
-            }
-        })
+        // socket.on("OnlineIds",ids=>{
+        //     console.log(ids);
+        //     return () => {
+        //         socket.off("OnlineIds")
+        //     }
+        // })
   return (
     <div className='chatwith'>
         <div className="features">
